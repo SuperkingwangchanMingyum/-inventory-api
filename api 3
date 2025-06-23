@@ -1,0 +1,29 @@
+using UnityEngine;
+using Opsive.UltimateCharacterController.Character;
+using Opsive.UltimateCharacterController.Game;
+public class MyAIAgent : MonoBehaviour
+{
+    [Tooltip("A reference to the Ultimate Character Controller character.")]
+    [SerializeField] private GameObject m_Character;
+    private UltimateCharacterLocomotion m_CharacterLocomotion;
+    
+    /// <summary>
+    /// Initializes the default values.
+    /// </summary>
+    private void Start()
+    {
+        m_CharacterLocomotion = m_Character.GetComponent<UltimateCharacterLocomotion>();
+        if (m_CharacterLocomotion == null) {
+            enabled = false;
+        }
+    }
+    
+    /// <summary>
+    /// Move the character in the forward direction with a slight turn.
+    /// </summary>
+    private void Update()
+    {
+        KinematicObjectManager.SetCharacterMovementInput(m_CharacterLocomotion.KinematicObjectIndex, 0, 1);
+        KinematicObjectManager.SetCharacterDeltaYawRotation(m_CharacterLocomotion.KinematicObjectIndex, 1);
+    }
+}
