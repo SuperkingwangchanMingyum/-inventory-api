@@ -1,0 +1,22 @@
+public void Awake()
+{
+    // The event registers with the local GameObject (the first parameter) so
+    // the component must be added to the same GameObject as the
+    // object that is sending the "OnDeath" event.
+    EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(gameObject, "OnDeath", OnDeath);
+}
+
+/// <summary>
+/// Receives the "OnDeath" event.
+/// </summary>
+private void OnDeath(Vector3 position, Vector3 force, GameObject attacker)
+{
+    Debug.Log("The object died");
+}
+
+public void OnDestroy()
+{
+    // Unregister from the event when the component is no longer interested in it. In this example the component is interested for the lifetime of
+    // the component (Awake -> OnDestroy).
+    EventHandler.UnregisterEvent<Vector3, Vector3, GameObject>(gameObject, "OnDeath", OnDeath);
+}
