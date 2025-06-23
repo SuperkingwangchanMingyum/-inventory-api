@@ -1,0 +1,26 @@
+Ultimate Character Locomotion
+AddSubCollider(s) has been renamed to AddIgnoredCollider(s):
+/// <summary>
+/// Adds an element to the ignored collider array.
+/// </summary>
+/// <param name="collider">The collider which should be added to the array.</param>
+void AddIgnoredCollider(Collider collider)
+
+/// <summary>
+/// Adds an array to the ignored collider array.
+/// </summary>
+/// <param name="colliders">The colliders which should be added to the array.</param>
+void AddIgnoredColliders(Collider[] colliders)
+
+RemoveSubCollider(s) has been renamed to RemoveIgnoredCollider(s):
+/// <summary>
+/// Removes the specified collider from the ignored collider array.
+/// </summary>
+/// <param name="collider">The collider which should be removed from the array.</param>
+void RemoveIgnoredCollider(Collider collider)
+
+/// <summary>
+/// Removes the specified colliders from the ignored collider array.
+/// </summary>
+/// <param name="colliders">The colliders that should be removed.</param>
+void RemoveIgnoredColliders(Collider[] colliders)
