@@ -1,0 +1,37 @@
+Impact Callback
+When a weapon collides with another object the "OnObjectImpact" event will be sent from the built-in Event System. A corresponding Unity event will also be sent. This event allows you to add new functionality when the impact occurs without having to change the class at all.
+
+using UnityEngine;
+using Opsive.Shared.Events;
+public class MyObject : MonoBehaviour
+{
+    /// <summary>
+    /// Initialize the default values.
+    /// </summary>
+    public void Awake()
+    {
+        EventHandler.RegisterEvent<float, Vector3, Vector3, GameObject, object, Collider>(gameObject, "OnObjectImpact", OnImpact);
+    }
+    
+    /// <summary>
+    /// The object has been impacted with another object.
+    /// </summary>
+    /// <param name="amount">The amount of damage taken.</param>
+    /// <param name="position">The position of the damage.</param>
+    /// <param name="forceDirection">The direction that the object took damage from.</param>
+    /// <param name="attacker">The GameObject that did the damage.</param>
+    /// <param name="attackerObject">The object that did the damage.</param>
+    /// <param name="hitCollider">The Collider that was hit.</param>
+    private void OnImpact(float amount, Vector3 position, Vector3 forceDirection, GameObject attacker, object attackerObject, Collider hitCollider)
+    {
+        Debug.Log(name + " impacted by " + attacker + " on collider " + hitCollider + ".");
+    }
+    
+    /// <summary>
+    /// The GameObject has been destroyed.
+    /// </summary>
+    public void OnDestroy()
+    {
+        EventHandler.UnregisterEvent<float, Vector3, Vector3, GameObject, object, Collider>(gameObject, "OnObjectImpact", OnImpact);
+    }
+}
