@@ -1,0 +1,51 @@
+GetActiveItem(int slotID)
+GetItem now uses an IItemIdentifier instead of ItemType:
+/// <summary>
+/// Returns the item that corresponds to the specified ItemIdentifier.
+/// </summary>
+/// <param name="slotID">The ID of the slot which the item belongs to.</param>
+/// <param name="itemIdentifier">The ItemIdentifier of the item.</param>
+/// <returns>The item which occupies the specified slot. Can be null.</returns>
+Item GetItem(int slotID, IItemIdentifier itemIdentifier)
+
+EquipItem has an updated parameter:
+/// <summary>
+/// Equips the ItemIdentifier in the specified slot.
+/// </summary>
+/// <param name="itemIdentifier">The ItemIdentifier to equip.</param>
+/// <param name="slotID">The ID of the slot.</param>
+/// <param name="immediateEquip">Is the item being equipped immediately? Immediate equips will occur from the default loadout or quickly switching to the item.</param>
+void EquipItem(IItemIdentifier itemIdentifier, int slotID, bool immediateEquip)
+
+UnequipItem has an updated parameter:
+/// <summary>
+/// Unequips the specified ItemIdentifier in the specified slot.
+/// </summary>
+/// <param name="itemIdentifier">The ItemIdentifier to unequip. If the ItemIdentifier isn't currently equipped then no changes will be made.</param>
+/// <param name="slotID">The ID of the slot.</param>
+void UnequipItem(IItemIdentifier itemIdentifier, int slotID)
+
+GetItemTypeCount has been renamed to GetItemIdentifierAmount with an updated parameter:
+/// <summary>
+/// Returns the amount of the specified ItemIdentifier.
+/// </summary>
+/// <param name="itemIdentifier">The ItemIdentifier to get the amount of.</param>
+/// <returns>The amount of the specified ItemIdentifier.</returns>
+int GetItemIdentifierAmount(IItemIdentifier itemIdentifier)
+
+UseItem has been renamed to AdjustItemIdentifierAmount with updated parameters:
+/// <summary>
+/// Adjusts the amount of the specified ItemIdentifier.
+/// </summary>
+/// <param name="itemIdentifier">The ItemIdentifier to adjust.</param>
+/// <param name="amount">The amount of ItemIdentifier to adjust.</param>
+void AdjustItemIdentifierAmount(IItemIdentifier itemIdentifier, int amount)
+
+RemoveItem has an updated parameter:
+/// <summary>
+/// Removes the ItemIdentifier from the inventory.
+/// </summary>
+/// <param name="itemIdentifier">The ItemIdentifier to remove.</param>
+/// <param name="slotID">The ID of the slot.</param>
+/// <param name="drop">Should the item be dropped when removed?</param>
+void RemoveItem(IItemIdentifier itemIdentifier, int slotID, bool drop)
