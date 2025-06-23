@@ -1,0 +1,12 @@
+Event Names
+Here is a list of all EventHandler events that the controller uses, along with a brief description of what each event is used for and its parameters, if it has any:
+
+Event Name | Parameters | Description
+OnAbilityMessageCanStart | Ability ability, bool canStart | The ability can start or no longer stop.
+OnAbilityUnequipItemComplete | Item item, int slotID | The item has been unequipped from the slot slotID.
+OnAbilityWillEquipItem | Item item, int slotID | The item will be equipped in the slot slotID.
+OnAddCrosshairsSpread | bool start, bool fromRecoil | The crosshair spread should be started/stopped, either from recoil or set to max spread.
+OnAddSecondaryCameraForce | Vector3 positionalForce, Vector3 rotationalForce, float restAccumulation | Adds a secondary positional and rotational force to the ViewTypes.
+OnAddSecondaryForce | int slotID, Vector3 positionalForce, Vector3 rotationalForce, bool globalForce | Adds a positional and rotational force to the IK target.
+OnAimAbilityAim | bool aim | The aim ability is/is not aiming.
+OnAimAbilityStart | bool aim, bool inputStart | The aim ability was started/stopped.
